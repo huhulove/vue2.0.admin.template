@@ -6,28 +6,28 @@ const menuData = [
 		menuName: '系统管理',
 		id: 1,
 		pid: 0,
-		url: '',
+		routeUrl: '',
 		routeName: ''
 	},
 	{
 		menuName: '菜单管理',
 		id: 2,
 		pid: 1,
-		url: '/system/menuManager',
+		routeUrl: '/system/menuManager',
 		routeName: 'MenuManager'
 	},
 	{
 		menuName: '用户管理',
 		id: 4,
 		pid: 1,
-		url: '/system/userManager',
+		routeUrl: '/system/userManager',
 		routeName: 'UserManager'
 	},
 	{
 		menuName: '部门管理',
 		id: 6,
 		pid: 1,
-		url: '/system/department',
+		routeUrl: '/system/department',
 		routeName: 'Department'
 	}
 ];
@@ -40,7 +40,8 @@ menuData.forEach(item => {
 		'status|1': menuStatusArr
 	}).status;
 	item.isShow = 0;
-	item.targetProperty = '_self';
+	item.isOutsideLink = 0;
+	item.isNewWindow = 1;
 	item.btnType = 0;
 	item.isDel = 0;
 	item.children = null;

@@ -6,7 +6,6 @@
 </template>
 
 <script>
-
 export default {
 	name: 'SvgIcon',
 	props: {
@@ -16,7 +15,7 @@ export default {
 		},
 		className: {
 			type: String,
-			default: ''
+			default: 'el-input__icon'
 		}
 	},
 	computed: {
@@ -28,7 +27,7 @@ export default {
 		},
 		svgClass() {
 			if (this.className) {
-				return `'svg-icon '${this.className}`;
+				return `svg-icon ${this.className}`;
 			}
 			return 'svg-icon';
 		},
@@ -42,7 +41,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .svg-icon {
 	width: 1em;
 	height: 1em;
@@ -55,5 +54,14 @@ export default {
 	background-color: currentColor;
 	mask-size: cover !important;
 	display: inline-block;
+}
+.el-input__icon {
+	height: 16px;
+	width: 16px;
+	vertical-align: middle;
+	/* &.big {
+		height: 20px;
+		width: 20px;
+	} */
 }
 </style>

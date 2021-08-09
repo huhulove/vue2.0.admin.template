@@ -4,13 +4,26 @@
 			<template v-for="(menu, index) in menuData">
 				<span :key="index">
 					<Submenu :menu_p="menu" v-if="menu.children && menu.children.length !== 0"></Submenu>
-					<el-menu-item
-						v-if="!menu.children || menu.children.length === 0"
-						:route="{ path: `/${menu.frontendRoute ? menu.frontendRoute.path : '404'}` }"
-						:index="`${menu.id}`"
-					>
-						{{ menu.menuName }}
-					</el-menu-item>
+					<template v-if="!menu.children || menu.children.length === 0">
+						<el-menu-item v-if="menu.isOutsideLink === 0" :route="{ path: `/${menu.frontendRoute ? menu.frontendRoute.path : '404'}` }" :index="`${menu.id}`">
+							<svg-icon :icon-class="menu.menuIcon" />
+							{{ menu.menuName }}
+						</el-menu-item>
+						<el-menu-item
+							v-if="menu.isOutsideLink === 1 && menu.isNewWindow === 0"
+							:route="{ path: `/${menu.frontendRoute.path}?url=${menu.url}` }"
+							:index="`${menu.id}`"
+						>
+							<svg-icon :icon-class="menu.menuIcon" />
+							{{ menu.menuName }}
+						</el-menu-item>
+						<div v-if="menu.isOutsideLink === 1 && menu.isNewWindow === 1" class="el-menu el-menu--inline">
+							<a class="el-menu-item menu-item" :href="menu.url" target="_blank">
+								<svg-icon :icon-class="menu.menuIcon" />
+								{{ menu.menuName }}
+							</a>
+						</div>
+					</template>
 				</span>
 			</template>
 		</el-menu>
@@ -105,6 +118,9 @@ export default {
 			margin-right: 17px !important;
 			display: none;
 		}
+	}
+	.menu-item {
+		display: block;
 	}
 }
 </style>
