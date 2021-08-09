@@ -1,5 +1,5 @@
 <template>
-	<DataForm :model_p="formData" :rules_p="formRules" @cancel="formCancel" @submit="formSubmit" :labelWidth_p="'110px'">
+	<DataForm :model_p="formData" :rules_p="formRules" :labelWidth_p="'110px'" @cancel="formCancel" @submit="formSubmit">
 		<el-form-item label="名称" prop="menuName">
 			<Input v-model="formData.menuName" placeholder="请输入菜单名称" />
 		</el-form-item>
@@ -88,7 +88,7 @@ export default {
 				routeUrl: [
 					{
 						required: true,
-						message: '请输入组件地址',
+						message: '请输入路由地址',
 						trigger: 'blur'
 					}
 				],

@@ -22,7 +22,7 @@
 					<div v-if="$menu.isOutsideLink === 1 && $menu.isNewWindow === 1" class="el-menu el-menu--inline">
 						<a class="el-menu-item menu-item" :href="$menu.url" target="_blank">
 							<svg-icon :icon-class="$menu.menuIcon" />
-							{{ $menu.menuName }}
+							<span class="menu-name">{{ $menu.menuName }}</span>
 						</a>
 					</div>
 				</template>
